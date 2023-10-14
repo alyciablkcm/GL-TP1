@@ -6,8 +6,7 @@ class AgedBrieCategory implements ItemCategory {
       increaseQuality(item);
       updateSellIn(item);
 
-      if (item.sellIn < 0) {
-         increaseQuality(item);
-     }
-  }
+      if (item.sellIn < 0) increaseQuality(item);
+    }
+
 }
