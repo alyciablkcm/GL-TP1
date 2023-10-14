@@ -215,7 +215,8 @@ public void testUpdateQualityConjuredWithPositiveSellIn() {
     Item[] items = new Item[] { new Item("Conjured", 10, 20) };
     GildedRose app = new GildedRose(items);
     app.updateQuality();
-    assertEquals(18, items[0].getQuality());
+    assertEquals(18, items[0].quality);
+    assertEquals(9, items[0].sellIn);
 }
 
 @Test
@@ -223,7 +224,8 @@ public void testUpdateQualityConjuredWithNegativeSellIn() {
     Item[] items = new Item[] { new Item("Conjured", 0, 20) };
     GildedRose app = new GildedRose(items);
     app.updateQuality();
-    assertEquals(16, items[0].getQuality());
+    assertEquals(16, items[0].quality);
+    assertEquals(-1, items[0].sellIn);
 }
 
 }
