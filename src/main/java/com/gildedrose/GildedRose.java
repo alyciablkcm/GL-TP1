@@ -54,26 +54,22 @@ class GildedRose {
     }
 
     private void updateAgedBrieQuality(Item item) {
-        if (item.quality < MAX_QUALITY) {
-            item.quality++;
-        }
+        increaseQuality(item);
         updateSellIn(item);
 
         if (item.sellIn < 0) {
-           if (item.quality < MAX_QUALITY) {
-             item.quality++;
-         }
+           increaseQuality(item);
        }
     }
 
     private void updateBackstagePassQuality(Item item) {
         if (item.quality < MAX_QUALITY) {
             item.quality++;
-            if (item.sellIn < 11 && item.quality < MAX_QUALITY) {
-                item.quality++;
+            if (item.sellIn < 11 ) {
+                increaseQuality(item);
             }
-            if (item.sellIn < 6 && item.quality < MAX_QUALITY) {
-                item.quality++;
+            if (item.sellIn < 6 ) {
+                increaseQuality(item);
             }
         }
         updateSellIn(item);
@@ -91,4 +87,10 @@ class GildedRose {
             item.sellIn = item.sellIn - 1;;
         }
     }
+
+    private void increaseQuality(Item item) {
+    if (item.quality < MAX_QUALITY) {
+        item.quality++;
+    }
+}
 }
