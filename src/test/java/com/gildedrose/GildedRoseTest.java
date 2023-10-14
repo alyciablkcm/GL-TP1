@@ -210,4 +210,20 @@ assertEquals(element.sellIn, -1);
 assertEquals(element.quality,50);
 }
 
+@Test
+public void testUpdateQualityConjuredWithPositiveSellIn() {
+    Item[] items = new Item[] { new Item("Conjured", 10, 20) };
+    GildedRose app = new GildedRose(items);
+    app.updateQuality();
+    assertEquals(18, items[0].getQuality());
+}
+
+@Test
+public void testUpdateQualityConjuredWithNegativeSellIn() {
+    Item[] items = new Item[] { new Item("Conjured", 0, 20) };
+    GildedRose app = new GildedRose(items);
+    app.updateQuality();
+    assertEquals(16, items[0].getQuality());
+}
+
 }
