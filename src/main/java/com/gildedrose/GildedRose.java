@@ -2,6 +2,10 @@ package com.gildedrose;
 
 class GildedRose {
     Item[] items;
+    private static final String AGED_BRIE = "Aged Brie";
+    private static final String BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    private static final int MAX_QUALITY = 50;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -28,15 +32,15 @@ class GildedRose {
     }
 
     private boolean isAgedBrie(Item item) {
-        return "Aged Brie".equals(item.name);
+        return AGED_BRIE.equals(item.name);
     }
 
     private boolean isBackstagePass(Item item) {
-        return "Backstage passes to a TAFKAL80ETC concert".equals(item.name);
+        return BACKSTAGE_PASS.equals(item.name);
     }
 
     private boolean isSulfuras(Item item) {
-        return "Sulfuras, Hand of Ragnaros".equals(item.name);
+        return SULFURAS.equals(item.name);
     }
 
     private void updateRegularItemQuality(Item item) {
@@ -50,25 +54,25 @@ class GildedRose {
     }
 
     private void updateAgedBrieQuality(Item item) {
-        if (item.quality < 50) {
+        if (item.quality < MAX_QUALITY) {
             item.quality++;
         }
         updateSellIn(item);
 
         if (item.sellIn < 0) {
-           if (item.quality < 50) {
+           if (item.quality < MAX_QUALITY) {
              item.quality++;
          }
        }
     }
 
     private void updateBackstagePassQuality(Item item) {
-        if (item.quality < 50) {
+        if (item.quality < MAX_QUALITY) {
             item.quality++;
-            if (item.sellIn < 11 && item.quality < 50) {
+            if (item.sellIn < 11 && item.quality < MAX_QUALITY) {
                 item.quality++;
             }
-            if (item.sellIn < 6 && item.quality < 50) {
+            if (item.sellIn < 6 && item.quality < MAX_QUALITY) {
                 item.quality++;
             }
         }
